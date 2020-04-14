@@ -1,0 +1,7 @@
+{
+  "name": "myCordovaApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
