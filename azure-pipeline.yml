@@ -1,1 +1,35 @@
+pool:
+  vmImage: 'macos-latest'
+
+steps:
+- task: InstallAppleCertificate@2
+  inputs:
+    certSecureFile: '$(P12FileName)'
+    certPwd: '$(P12Password)'
+    keychain: 'temp'
+
+- task: InstallAppleProvisioningProfile@1
+  inputs:
+    provisioningProfileLocation: 'secureFiles'
+    provProfileSecureFile: '$(provProfileSecureFileName)'# The 'provProfileSecureFileName' variable is set in azure pipelines 'Variables'
+
+- task: DownloadSecureFile@1
+  name: provSecureFileName
+  inputs:
+    secureFile: '$(provProfileSecureFileName)'
+
+- task: DownloadSecureFile@1
+  name: p12SecureFileName
+  inputs:
+    secureFile: '$(P12FileName)'
+
+- task: CordovaBuild@1
+  inputs:
+    platform: 'ios'
+    configuration: 'Release'
+    p12: '$(p12SecureFileName.secureFilePath)'
+    p12pwd: '$(P12Password)'
+    provProfile: '$(provSecureFileName.secureFilePath)'
+    removeProfile: true
+    outputPattern: 'bin'
 
