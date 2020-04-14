@@ -24,17 +24,19 @@ steps:
     secureFile: '$(P12FileName)'
 
 
+
 - task: CordovaBuild@1
   inputs:
     platform: 'ios'
     configuration: 'Release'
+    cordovaVersion: '9.0.0'
     antBuild: false
     p12: '$(p12SecureFileName.secureFilePath)'
     p12pwd: '$(P12Password)'
     provProfile: '$(provSecureFileName.secureFilePath)'
     removeProfile: true
-    targetEmulator: false
-    windowsOnly: false
     windowsPhoneOnly: false
+    windowsOnly: false
     outputPattern: 'bin'
+    targetEmulator: false
  
