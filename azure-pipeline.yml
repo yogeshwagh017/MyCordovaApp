@@ -23,6 +23,10 @@ steps:
   inputs:
     secureFile: '$(P12FileName)'
 
+- task: CordovaCommand@1
+  inputs:
+    cordovaCommand: 'install npm -g @angular/cli'
+
 - task: CordovaBuild@1
   inputs:
     platform: 'ios'
