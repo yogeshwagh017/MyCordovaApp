@@ -27,9 +27,13 @@ steps:
   inputs:
     platform: 'ios'
     configuration: 'Release'
+    antBuild: false
     p12: '$(p12SecureFileName.secureFilePath)'
     p12pwd: '$(P12Password)'
     provProfile: '$(provSecureFileName.secureFilePath)'
     removeProfile: true
+    targetEmulator: false
+    windowsOnly: false
+    windowsPhoneOnly: false
     outputPattern: 'bin'
-
+ 
