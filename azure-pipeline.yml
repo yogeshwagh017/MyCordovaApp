@@ -23,7 +23,9 @@ steps:
   inputs:
     secureFile: '$(P12FileName)'
 
-
+- task: CordovaCommand@1
+  inputs:
+    cordovaCommand: 'build'
 
 - task: CordovaBuild@1
   inputs:
