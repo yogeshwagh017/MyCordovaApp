@@ -25,7 +25,8 @@ steps:
 
 - task: CordovaCommand@1
   inputs:
-    cordovaCommand: 'build'
+    cordovaCommand: 'cordova build'
+    cordovaArgs: 'ios'
 
 - task: CordovaBuild@1
   inputs:
