@@ -23,10 +23,8 @@ steps:
   inputs:
     secureFile: '$(P12FileName)'
 
-- task: CordovaCommand@1
-  inputs:
-    cordovaCommand: 'cordova build'
-    cordovaArgs: 'ios'
+- task: NodeTool@0
+  displayName: 'Use Node 6.x'
 
 - task: CordovaBuild@1
   inputs:
